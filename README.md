@@ -15,7 +15,7 @@ These extensions provides the follow tables:
   
 # How to install and run
 Download the compiled extension(s) from the GitHub releases link
-Run the extensions with `osqueryi --extension <path to extension>` or include the extension in a osquery flag/config file
+Run the extensions with `osqueryi --extension <path to extension>` or include the extension in a osquery flag/config file  
 
 # How to build
 Clone this repository  
