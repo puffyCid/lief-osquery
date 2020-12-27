@@ -29,6 +29,5 @@ When configuring the build osquery include the argument `-DLIEF_ROOT=<path to ch
 ```
 cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 -DLIEF_ROOT=<path to lief-osquery/darwin>  ..
 cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_ROOT=<path to lief-osquery/windows>..
-
 ```
 Extension binareis are also avaiable to download
