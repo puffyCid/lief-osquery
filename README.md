@@ -18,13 +18,13 @@ Download the compiled extension(s) from the GitHub releases link
 Run the extensions with `osqueryi --extension <path to extension>` or include the extension in a osquery flag/config file
 
 # How to build
-Clone this repository
-Clone the osquery respository
-Download the prebuilt nightly LIEF binaries from https://lief.quarkslab.com/packages/sdk/
+Clone this repository  
+Clone the osquery respository  
+Download the prebuilt nightly LIEF binaries from https://lief.quarkslab.com/packages/sdk/  
 Place the include and lib folders into the darwin/ and/or windows/
 
-Place the darwin and/or windows into the `external` directory in osquery 
-Follow the osquery build process at https://osquery.readthedocs.io/en/stable/development/building/
+Place the darwin and/or windows into the `external` directory in osquery  
+Follow the osquery build process at https://osquery.readthedocs.io/en/stable/development/building/  
 When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{windows,darwin}>`  
 ```
 cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 -DLIEF_ROOT=<path to lief-osquery/darwin>  ..
