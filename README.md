@@ -25,7 +25,7 @@ Place the include and lib folders into the checkedout directory
 
 Place the cloned directory into the external directory in the checkedout osquery directory
 Follow the osquery build process at https://osquery.readthedocs.io/en/stable/development/building/
-When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{extension\_pe or extension\_macho}>`  
+When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{windows,darwin}>`  
 ```
 cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 -DLIEF_ROOT=<path to lief-osquery/darwin>  ..
 cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_ROOT=<path to lief-osquery/windows>..
