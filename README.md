@@ -21,9 +21,9 @@ Run the extensions with `osqueryi --extension <path to extension>` or include th
 Clone this repository
 Clone the osquery respository
 Download the prebuilt nightly LIEF binaries from https://lief.quarkslab.com/packages/sdk/
-Place the include and lib folders into the checkedout directory
+Place the include and lib folders into the darwin/ and/or windows/
 
-Place the cloned directory into the external directory in the checkedout osquery directory
+Place the darwin and/or windows into the `external` directory in osquery 
 Follow the osquery build process at https://osquery.readthedocs.io/en/stable/development/building/
 When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{windows,darwin}>`  
 ```
