@@ -31,3 +31,15 @@ cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 -DLIEF_ROOT=<path to osquery/external/
 cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_ROOT=<path to osquery\external\extension_lief_windows> -DLIEF_LIBRARY=<path to osquery\external\extension_lief_windows\lib\LIEFMT.lib> ..
 ```
 Extension binareis are also available to download
+# Usage
+```
+./osquery/osqueryi --extension external/extension_lief_darwin/lief_macho.ext
+Using a virtual database. Need help, type '.help'
+osquery> select * from macho_info where path = '/usr/local/bin/osqueryd';
++-------------------------+----------+--------+------------+-------------------+-------------------+-------------+-------------+--------+--------+--------------+---------------------+------------------------------+------------------------------+--------------------+
+| path                    | filename | arch   | entrypoint | build_version_min | build_version_sdk | version_min | version_sdk | is_pie | has_nx | is_encrypted | number_of_libraries | number_of_imported_functions | number_of_exported_functions | number_of_sections |
++-------------------------+----------+--------+------------+-------------------+-------------------+-------------+-------------+--------+--------+--------------+---------------------+------------------------------+------------------------------+--------------------+
+| /usr/local/bin/osqueryd | osqueryd | x86_64 | 10012dd45  |                   |                   | 10.11.0     | 10.14.0     | 1      | 1      | 0            | 21                  | 1077                         | 372                          | 24                 |
++-------------------------+----------+--------+------------+-------------------+-------------------+-------------+-------------+--------+--------+--------------+---------------------+------------------------------+------------------------------+--------------------+
+
+```

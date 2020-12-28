@@ -5,8 +5,8 @@
 #include <osquery/logger/logger.h>
 #include <osquery/sdk/sdk.h>
 #include <osquery/sql/dynamic_table_row.h>
-#include <sstream>
 
+#include <sstream>
 class MachoInfoTable : public osquery::TablePlugin {
  private:
   osquery::TableColumns columns() const {
@@ -24,6 +24,12 @@ class MachoInfoTable : public osquery::TablePlugin {
                         osquery::TEXT_TYPE,
                         osquery::ColumnOptions::DEFAULT),
         std::make_tuple("build_version_sdk",
+                        osquery::TEXT_TYPE,
+                        osquery::ColumnOptions::DEFAULT),
+	 std::make_tuple("version_min",
+                        osquery::TEXT_TYPE,
+                        osquery::ColumnOptions::DEFAULT),
+        std::make_tuple("version_sdk",
                         osquery::TEXT_TYPE,
                         osquery::ColumnOptions::DEFAULT),
         std::make_tuple(
@@ -113,6 +119,19 @@ class MachoInfoTable : public osquery::TablePlugin {
               ss << std::to_string(build) << ".";
             }
             r["build_version_sdk"] = ss.str().substr(0, ss.str().size() - 1);
+	    }
+	  if (data.has_version_min()) {
+            std::ostringstream ss;
+
+            for (const auto& min : data.version_min().version()) {
+              ss << std::to_string(min) << ".";
+            }
+            r["version_min"] = ss.str().substr(0, ss.str().size() - 1);
+            ss.str("");
+            for (const auto& build : data.version_min().sdk()) {
+              ss << std::to_string(build) << ".";
+            }
+            r["version_sdk"] = ss.str().substr(0, ss.str().size() - 1);
           }
 
           r["number_of_imported_functions"] = osquery::INTEGER(data.imported_functions().size());
