@@ -20,12 +20,12 @@ Run the extensions with `osqueryi --extension <path to extension>` or include th
 # How to build
 Clone this repository  
 Clone the osquery respository  
-Download the prebuilt nightly LIEF binaries from https://lief.quarkslab.com/packages/sdk/  
-Extract LIEF into the darwin/ and/or windows/
+Download the prebuilt nightly Windows and/or Darwin LIEF binaries from https://lief.quarkslab.com/packages/sdk/  
+Extract LIEF into the extension\_lief\_darwin/ and/or extension\_lief\_windows/
 
-Place the darwin and/or windows into the `external` directory in osquery  
+Place the extension\_lief\_darwin and/or extension\_lief\_windows into the `external` directory in osquery  
 Follow the osquery build process at https://osquery.readthedocs.io/en/stable/development/building/  
-When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{windows,darwin}>`  
+When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{extension_lief_windows or extension_lief_darwin}>`  
 ```
 cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 -DLIEF_ROOT=<path to osquery/external/extension_lief_darwin>  ..
 cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_ROOT=<path to osquery/external/extension_lief_windows>..
