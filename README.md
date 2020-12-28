@@ -28,6 +28,6 @@ Follow the osquery build process at https://osquery.readthedocs.io/en/stable/dev
 When configuring the build osquery include the argument `-DLIEF_ROOT=<path to checkedout lief-osquery/{extension_lief_windows or extension_lief_darwin}>`  
 ```
 cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.11 -DLIEF_ROOT=<path to osquery/external/extension_lief_darwin>  ..
-cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_ROOT=<path to osquery/external/extension_lief_windows>..
+cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_ROOT=<path to osquery\external\extension_lief_windows> -DLIEF_LIBRARY=<path to osquery\external\extension_lief_windows\lib\LIEFMT.lib> ..
 ```
 Extension binareis are also available to download
