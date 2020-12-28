@@ -10,19 +10,19 @@ include(FindLIEF)
 find_package(LIEF REQUIRED COMPONENTS STATIC)
 
 function(osqueryExtensionsExampleMain)
-  addOsqueryExtension(lief_ext src/main.cpp src/pelibraries.cpp src/pefunctions.cpp src/pesections.cpp src/pesig.cpp)
+  addOsqueryExtension(lief_pe src/main.cpp src/pelibraries.cpp src/pefunctions.cpp src/pesections.cpp src/pesig.cpp)
   if (MSVC)
     # Used for the 'and', 'or' ... keywords - See: http://www.cplusplus.com/reference/ciso646/
-    target_compile_options(lief_ext PUBLIC /FIiso646.h)
-	set_property(TARGET lief_ext PROPERTY LINK_FLAGS /NODEFAULTLIB:MSVCRT)
+    target_compile_options(lief_pe PUBLIC /FIiso646.h)
+	set_property(TARGET lief_pe PROPERTY LINK_FLAGS /NODEFAULTLIB:MSVCRT)
   endif()
-  target_include_directories(lief_ext PUBLIC PUBLIC ${LIEF_INCLUDE_DIRS})
+  target_include_directories(lief_pe PUBLIC PUBLIC ${LIEF_INCLUDE_DIRS})
 
-set_property(TARGET lief_ext PROPERTY CXX_STANDARD           11)
-set_property(TARGET lief_ext PROPERTY CXX_STANDARD_REQUIRED  ON)
-target_link_libraries(lief_ext PUBLIC ${LIEF_LIBRARIES})
+set_property(TARGET lief_pe PROPERTY CXX_STANDARD           11)
+set_property(TARGET lief_pe PROPERTY CXX_STANDARD_REQUIRED  ON)
+target_link_libraries(lief_pe PUBLIC ${LIEF_LIBRARIES})
 
-    target_link_libraries(lief_ext PRIVATE
+    target_link_libraries(lief_pe PRIVATE
         osquery_sdk_pluginsdk
         osquery_extensions_implthrift
     )
