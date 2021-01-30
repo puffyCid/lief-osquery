@@ -3,6 +3,7 @@ project(LiefExt VERSION 1.0
   LANGUAGES CXX)
 
 include(${CMAKE_SOURCE_DIR}/external/cmake/cmakelibs.cmake)
+
 set(LIEF_DIR CACHE PATH ${CMAKE_INSTALL_PREFIX})
 list(APPEND CMAKE_MODULE_PATH ${LIEF_DIR}/share/LIEF/cmake)
 include(FindLIEF)

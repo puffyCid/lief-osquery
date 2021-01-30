@@ -75,6 +75,7 @@ class PeSigTable : public osquery::TablePlugin {
         }
 
         auto sig = pe_binary->signatures();
+
         // Get Signature info from PE file
         for (const auto& certs : sig->certificates()) {
           auto r = osquery::make_table_row();

@@ -4,8 +4,8 @@ project(LiefExt VERSION 1.0
 
 include(${CMAKE_SOURCE_DIR}/external/cmake/cmakelibs.cmake)
 
-set(LIEF_ROOT CACHE PATH ${CMAKE_INSTALL_PREFIX})
-list(APPEND CMAKE_MODULE_PATH ${LIEF_ROOT}/share/LIEF/cmake)
+set(LIEF_DIR CACHE PATH ${CMAKE_INSTALL_PREFIX})
+list(APPEND CMAKE_MODULE_PATH ${LIEF_DIR}/share/LIEF/cmake)
 include(FindLIEF)
 find_package(LIEF REQUIRED COMPONENTS STATIC)
 
