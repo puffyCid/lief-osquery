@@ -70,11 +70,11 @@ class PeSigTable : public osquery::TablePlugin {
         }
         std::unique_ptr<LIEF::PE::Binary> pe_binary =
             LIEF::PE::Parser::parse(path_string);
-        if (!pe_binary->has_signature()) {
+        if (!pe_binary->has_signatures()) {
           continue;
         }
 
-        auto sig = &pe_binary->signature();
+        auto sig = pe_binary->signatures();
 
         // Get Signature info from PE file
         for (const auto& certs : sig->certificates()) {

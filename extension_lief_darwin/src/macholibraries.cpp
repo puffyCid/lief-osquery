@@ -21,9 +21,6 @@ class MachoLibrariesTable : public osquery::TablePlugin {
         std::make_tuple("library_name",
                         osquery::TEXT_TYPE,
                         osquery::ColumnOptions::DEFAULT),
-        std::make_tuple("library_size",
-                        osquery::INTEGER_TYPE,
-                        osquery::ColumnOptions::DEFAULT),
         std::make_tuple(
             "version", osquery::TEXT_TYPE, osquery::ColumnOptions::DEFAULT),
         std::make_tuple("compatibility_version",
@@ -74,7 +71,6 @@ class MachoLibrariesTable : public osquery::TablePlugin {
             r["filename"] = path.filename().string();
             r["arch"] = LIEF::MachO::to_string(data.header().cpu_type());
             r["library_name"] = library.name();
-            r["library_size"] = osquery::INTEGER(library.size());
             std::ostringstream ss;
             for (const auto& version : library.current_version()) {
               ss << std::to_string(version) << ".";
