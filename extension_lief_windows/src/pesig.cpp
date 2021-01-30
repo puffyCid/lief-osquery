@@ -1,4 +1,5 @@
-#include <LIEF/LIEF.hpp>
+#include <LIEF/PE.hpp>
+#include <LIEF/logging.hpp>
 #include <boost/filesystem.hpp>
 #include <osquery/core/system.h>
 #include <osquery/filesystem/filesystem.h>
@@ -7,7 +8,6 @@
 #include <osquery/sql/dynamic_table_row.h>
 
 #include <sstream>
-
 class PeSigTable : public osquery::TablePlugin {
  private:
   osquery::TableColumns columns() const {
@@ -70,12 +70,11 @@ class PeSigTable : public osquery::TablePlugin {
         }
         std::unique_ptr<LIEF::PE::Binary> pe_binary =
             LIEF::PE::Parser::parse(path_string);
-        if (!pe_binary->has_signature()) {
+        if (!pe_binary->has_signatures()) {
           continue;
         }
 
-        auto sig = &pe_binary->signature();
-
+        auto sig = pe_binary->signatures();
         // Get Signature info from PE file
         for (const auto& certs : sig->certificates()) {
           auto r = osquery::make_table_row();

@@ -1,4 +1,5 @@
-#include <LIEF/LIEF.hpp>
+#include <LIEF/PE.hpp>
+#include <LIEF/logging.hpp>
 #include <boost/filesystem.hpp>
 #include <osquery/core/system.h>
 #include <osquery/filesystem/filesystem.h>
@@ -7,7 +8,6 @@
 #include <osquery/sql/dynamic_table_row.h>
 
 #include <sstream>
-
 class LiefInfoTable : public osquery::TablePlugin {
  private:
   osquery::TableColumns columns() const {
@@ -80,7 +80,7 @@ class LiefInfoTable : public osquery::TablePlugin {
         // Get basic PE file info
         r["path"] = path_string;
         r["filename"] = path.filename().string();
-        r["signed"] = osquery::INTEGER(pe_binary->has_signature());
+        r["signed"] = osquery::INTEGER(pe_binary->has_signatures());
         r["imphash"] = LIEF::PE::get_imphash(*pe_binary);
         r["number_of_libraries"] =
             osquery::INTEGER(pe_binary->imported_libraries().size());

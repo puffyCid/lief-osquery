@@ -1,4 +1,5 @@
-#include <LIEF/LIEF.hpp>
+#include <LIEF/PE.hpp>
+#include <LIEF/logging.hpp>
 #include <boost/filesystem.hpp>
 #include <osquery/core/system.h>
 #include <osquery/filesystem/filesystem.h>

@@ -3,11 +3,10 @@ project(LiefExt VERSION 1.0
   LANGUAGES CXX)
 
 include(${CMAKE_SOURCE_DIR}/external/cmake/cmakelibs.cmake)
-
-set(LIEF_ROOT CACHE PATH ${CMAKE_INSTALL_PREFIX})
-list(APPEND CMAKE_MODULE_PATH ${LIEF_ROOT}/share/LIEF/cmake)
+set(LIEF_DIR CACHE PATH ${CMAKE_INSTALL_PREFIX})
+list(APPEND CMAKE_MODULE_PATH ${LIEF_DIR}/share/LIEF/cmake)
 include(FindLIEF)
-find_package(LIEF REQUIRED COMPONENTS STATIC)
+find_package(LIEF 0.11.0 REQUIRED COMPONENTS STATIC)
 
 function(osqueryExtensionsExampleMain)
   addOsqueryExtension(lief_pe src/main.cpp src/pelibraries.cpp src/pefunctions.cpp src/pesections.cpp src/pesig.cpp)
@@ -16,7 +15,7 @@ function(osqueryExtensionsExampleMain)
     target_compile_options(lief_pe PUBLIC /FIiso646.h)
 	set_property(TARGET lief_pe PROPERTY LINK_FLAGS /NODEFAULTLIB:MSVCRT)
   endif()
-  target_include_directories(lief_pe PUBLIC PUBLIC ${LIEF_INCLUDE_DIRS})
+  target_include_directories(lief_pe PUBLIC ${LIEF_INCLUDE_DIRS})
 
 set_property(TARGET lief_pe PROPERTY CXX_STANDARD           11)
 set_property(TARGET lief_pe PROPERTY CXX_STANDARD_REQUIRED  ON)
