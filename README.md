@@ -28,9 +28,10 @@ Follow the osquery build process at https://osquery.readthedocs.io/en/stable/dev
 When configuring the build osquery include the argument `-DLIEF_DIR=<path to checkedout lief-osquery/{extension_lief_windows or extension_lief_darwin}>`  
 ```
 cmake -DCMAKE_OSX_DEPLOYMENT_TARGET=10.12 -DLIEF_DIR=<path to osquery/external/extension_lief_darwin> ..
-cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_DIR=<path to osquery\external\extension_lief_windows> ..
+cmake -G "Visual Studio 16 2019" -A x64 -DLIEF_DIR=<path to osquery\external\extension_lief_windows> -DLIEF_LIBRARY=<path to osquery\external\extension_lief_windows\LIEFMT.lib>..
 ```
-Extension binaries are also available to download
+Extension binaries are also available to download  
+The binaries have been tested on Windows 10 and macOS 10.15 (Catalina)
 # Usage
 ```
 ./osquery/osqueryi --extension external/extension_lief_darwin/lief_macho.ext
@@ -42,4 +43,8 @@ osquery> select * from macho_info where path = '/usr/local/bin/osqueryd';
 | /usr/local/bin/osqueryd | osqueryd | x86_64 | 10012dd45  |                   |                   | 10.11.0     | 10.14.0     | 1      | 1      | 0            | 21                  | 1077                         | 372                          | 24                 |
 +-------------------------+----------+--------+------------+-------------------+-------------------+-------------+-------------+--------+--------+--------------+---------------------+------------------------------+------------------------------+--------------------+
 
+```
+If watchdog kills the extension you may needed to disable watchdog
+```
+./osquery/osqueryi --extension external/extension_lief_darwin/lief_macho.ext --watchdog_level=-1
 ```
